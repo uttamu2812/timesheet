@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "311864479557",
+    "firebase_url": "https://pushnotificationapp-9d0cd.firebaseio.com",
+    "project_id": "pushnotificationapp-9d0cd",
+    "storage_bucket": "pushnotificationapp-9d0cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311864479557:android:ad4ccdd6d97a40cf",
+        "android_client_info": {
+          "package_name": "io.ionic.notification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311864479557-4ga34imnuqa9u6dk0809h2b93vn3c0id.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApe1CNXfm75i_Nx8OXHek063y3XfHB8ZE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311864479557:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311864479557-4ga34imnuqa9u6dk0809h2b93vn3c0id.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApe1CNXfm75i_Nx8OXHek063y3XfHB8ZE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

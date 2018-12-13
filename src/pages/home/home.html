@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Time sheet</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <div style=" display: flex; justify-content: center;">
+         
+        <h1>{{date}}</h1>
+        
+      
+  </div>
+<div  *ngIf="!isAdmin">
+     <form [formGroup]="timesheet" (ngSubmit)="submitSheet()">
+
+      <ion-item>
+        <ion-label>Week 1</ion-label>
+        <ion-input type="text" formControlName="week1"></ion-input>
+      </ion-item>
+            <ion-item>
+        <ion-label>Week 2</ion-label>
+        <ion-input type="text" formControlName="week2"></ion-input>
+      </ion-item>
+            <ion-item>
+        <ion-label>Week 3</ion-label>
+        <ion-input type="text" formControlName="week3"></ion-input>
+      </ion-item>
+      
+             <ion-item>
+        <ion-label>Week 4</ion-label>
+        <ion-input type="text" formControlName="week4"></ion-input>
+      </ion-item>
+     
+      <div style="display: flex;justify-content: center;">
+              <button ion-button type="submit" [disabled]="!timesheet.valid">Submit</button>
+      </div>
+
+    </form>
+</div>
+
+
+<div  *ngIf="isAdmin">
+  <ion-grid>
+      <ion-row>
+    <ion-col col-3>
+      Name
+    </ion-col>
+    <ion-col>
+     Week1
+    </ion-col>
+        <ion-col>
+     Week2
+    </ion-col>
+        <ion-col>
+    Week3
+    </ion-col>
+        <ion-col>
+     Week4
+    </ion-col>
+            <ion-col>
+     Total
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3>
+      Associate 1
+    </ion-col>
+    <ion-col>
+     40 hr
+    </ion-col>
+    <ion-col>
+     40 hr
+    </ion-col>
+    <ion-col>
+     40 hr
+    </ion-col>
+    <ion-col>
+     40 hr
+    </ion-col>
+    <ion-col>
+     160 hr
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-3>
+      Associate 2
+    </ion-col>
+    <ion-col>
+     40 hr
+    </ion-col>
+        <ion-col>
+     30 hr
+    </ion-col>
+        <ion-col>
+     40 hr
+    </ion-col>
+        <ion-col>
+     30 hr
+    </ion-col>
+            <ion-col>
+     130 hr
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</div>
+
+</ion-content>

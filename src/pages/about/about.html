@@ -1,0 +1,77 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div *ngIf="isSigned">
+    
+    <ion-card>
+
+  <ion-card-header>
+    <div style=" display: flex;justify-content: flex-end;"><ion-icon ios="ios-create" md="md-create" (click)="updateProfile()"></ion-icon></div>
+    <div style=" display: flex;justify-content: center;">
+          <ion-avatar item-start>
+        <ion-icon style="zoom: 4;" ios="ios-contact" md="md-contact" [class.selected]="employee.selected"></ion-icon>
+      </ion-avatar>
+    </div>
+
+    <div style=" display: flex;justify-content: center;"><h1>{{user.fName}} {{user.lName}}</h1></div>
+    <div style=" display: flex;justify-content: center;"><p>( {{user.empId}} ) </p></div>
+  </ion-card-header>
+
+  <ion-card-content>
+     <p>
+        <ion-icon ios="ios-mail" md="md-mail"></ion-icon> {{user.cognizantMail}}
+      </p>
+      <p>
+        <ion-icon ios="ios-mail" md="md-mail"></ion-icon> {{user.clientMailId}}
+      </p>
+      <p>
+        <ion-icon ios="ios-call" md="md-call"></ion-icon> {{user.contactNumber}}
+      </p>
+  </ion-card-content>
+
+</ion-card>
+
+  </div>
+<div *ngIf="!isSigned">
+        <form [formGroup]="account" (ngSubmit)="doSignup()">
+      <ion-item>
+        <ion-label>First Name</ion-label>
+        <ion-input type="text" formControlName="fName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Last Name</ion-label>
+        <ion-input type="text" formControlName="lName"></ion-input>
+      </ion-item>
+            <ion-item>
+        <ion-label>Employee Id</ion-label>
+        <ion-input type="text" formControlName="empId"></ion-input>
+      </ion-item>
+            <ion-item>
+        <ion-label>Cognizant email</ion-label>
+        <ion-input type="text" formControlName="cognizantMail"></ion-input>
+      </ion-item>
+      
+             <ion-item>
+        <ion-label>Client email</ion-label>
+        <ion-input type="text" formControlName="clientMailId"></ion-input>
+      </ion-item>
+                  <ion-item>
+        <ion-label>Contact No</ion-label>
+        <ion-input type="text" formControlName="contactNumber"></ion-input>
+      </ion-item>     
+      <div style="display: flex;justify-content: center;">
+              <button ion-button type="submit" [disabled]="!account.valid">Submit</button>
+      </div>
+
+    </form>
+</div>
+
+</ion-content>

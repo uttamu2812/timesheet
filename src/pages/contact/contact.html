@@ -1,0 +1,33 @@
+<ion-header style="background-color: #488aff;">
+  <ion-navbar>
+    <ion-title>Associate list</ion-title>
+  </ion-navbar>
+  <!-- <page-header></page-header> -->
+</ion-header>
+<ion-content>
+    <ion-fab right bottom>
+    <button ion-fab mini color="success" (click)="remainderPrompt()"><ion-icon ios="ios-send" md="md-send"></ion-icon></button>
+   
+  </ion-fab>
+  <ion-list>
+    <ion-item *ngFor="let employee of employees" (click)="selectEmployee(employee)">
+      <ion-avatar item-start>
+        <ion-icon style="zoom: 3;" ios="ios-contact" md="md-contact" [class.selected]="employee.selected"></ion-icon>
+      </ion-avatar>
+      <ion-row>
+         <h2>{{employee.fName}} {{employee.lName}}</h2>
+       
+        ({{employee.empId}})
+      </ion-row>
+      <p>
+        <ion-icon ios="ios-mail" md="md-mail"></ion-icon> {{employee.cognizantMail}}
+      </p>
+      <p>
+        <ion-icon ios="ios-mail" md="md-mail"></ion-icon> {{employee.clientMailId}}
+      </p>
+      <p>
+        <ion-icon ios="ios-call" md="md-call"></ion-icon> {{employee.contactNumber}}
+      </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

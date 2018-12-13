@@ -1,0 +1,74 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login/Signup</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<div *ngIf="!(signupClicked || loginClicked)">
+        <div style="display: flex;justify-content: center;">
+              <button ion-button full  (click)="loginClicked=true">Login</button>
+      </div>
+
+       <div style="display: flex;justify-content: center;">
+              <button ion-button full (click)="signupClicked=true">Signup</button>
+      </div>
+</div>
+
+
+<div *ngIf="loginClicked">
+  <form [formGroup]="user" (ngSubmit)="doLogin()">
+
+      <ion-item>
+        <ion-label>Cognizant email</ion-label>
+        <ion-input type="text" formControlName="cognizantMail"></ion-input>
+      </ion-item>
+        <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>     
+      <div style="display: flex;justify-content: center;">
+              <button ion-button type="submit" [disabled]="!user.valid">Login</button> <button ion-button type="submit"  (click)="loginClicked=false;signupClicked=false">Cancel</button>
+      </div>
+
+    </form>
+</div>
+<div *ngIf="signupClicked">
+          <form [formGroup]="account" (ngSubmit)="doSignup()">
+      <ion-item>
+        <ion-label>First Name</ion-label>
+        <ion-input type="text" formControlName="fName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Last Name</ion-label>
+        <ion-input type="text" formControlName="lName"></ion-input>
+      </ion-item>
+            <ion-item>
+        <ion-label>Employee Id</ion-label>
+        <ion-input type="text" formControlName="empId"></ion-input>
+      </ion-item>
+            <ion-item>
+        <ion-label>Cognizant email</ion-label>
+        <ion-input type="text" formControlName="cognizantMail"></ion-input>
+      </ion-item>
+      
+             <ion-item>
+        <ion-label>Client email</ion-label>
+        <ion-input type="text" formControlName="clientMailId"></ion-input>
+      </ion-item>
+                  <ion-item>
+        <ion-label>Contact No</ion-label>
+        <ion-input type="text" formControlName="contactNumber"></ion-input>
+      </ion-item>     
+      <div style="display: flex;justify-content: center;">
+              <button ion-button type="submit" [disabled]="!account.valid">Signup</button>  <button ion-button type="submit"  (click)="loginClicked=false;signupClicked=false">Cancel</button>
+      </div>
+
+    </form>
+</div> 
+
+
+
+</ion-content> 

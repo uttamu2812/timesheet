@@ -1,0 +1,7 @@
+{
+  "name": "timesheetnotification",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
