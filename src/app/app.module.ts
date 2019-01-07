@@ -6,18 +6,19 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { TemplatePage } from '../pages/template/template';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { Push } from '@ionic-native/push';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { HttpModule } from '@angular/http'; 
 
 import {Employee} from '../provider/employee'
 import {TimesheetNotification} from '../provider/timesheetNotification'
-import { FCM } from '@ionic-native/fcm';
+
 import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
@@ -27,7 +28,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ContactPage,
     HomePage,
     LoginPage,
-    TabsPage
+    TabsPage,
+    TemplatePage
   ],
   imports: [
     BrowserModule,
@@ -43,14 +45,15 @@ import { IonicStorageModule } from '@ionic/storage';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    TemplatePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Employee,
     TimesheetNotification,
-    FCM,
+    Push,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

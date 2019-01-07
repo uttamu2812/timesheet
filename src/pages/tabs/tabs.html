@@ -2,4 +2,5 @@
   <ion-tab [root]="tab1Root" tabTitle="TimeSheet" tabIcon="calendar"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="Profile" tabIcon="information-circle"  *ngIf="isAssociate"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Associates" tabIcon="contacts" *ngIf="isAdmin"></ion-tab>
+    <ion-tab [root]="tab4Root" tabTitle="Template" tabIcon="mail" *ngIf="isAdmin"></ion-tab>
 </ion-tabs>

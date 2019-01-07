@@ -1,0 +1,9 @@
+1.install docker
+2.json server in remote server.
+https://hub.docker.com/r/williamyeh/json-server/
+
+3.docker run  -p 3000:3000  -v `pwd`:/data    williamyeh/json-server --watch --host http://104.210.69.80 ./db.json
+
+export PATH="/snap/bin:$PATH"
+
+docker run  -p 4200:4200  -v  ionic serve --host http://104.210.69.80 

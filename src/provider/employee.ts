@@ -11,24 +11,39 @@ uri:String;
 
   constructor(private http:Http) {
      //this.uri="http://localhost:3000"
-    this.uri="https://timesheet-96181.firebaseapp.com/api"
+   this.uri="http://104.210.69.80:3000"
    }
 
 
-getMessages():Observable<any>{
+  getMessages():Observable<any>{
 
-   return this.http.get(this.uri+'/messages').map((response:Response) => response.json());
- 
-}
-getNotifications(){
-	 return this.http.get(this.uri+'/messages').map((response:Response) => response.json());
-}
+     return this.http.get(this.uri+'/messages').map((response:Response) => response.json());
+   
+  }
+  getNotifications():Observable<any>{
+  	 return this.http.get(this.uri+'/messages').map((response:Response) => response.json());
+  }
 
-getEmployees():Observable<any>{
+  getEmployees():Observable<any>{
 
-   return this.http.get(this.uri+'/employees').map((response:Response) => response.json());
- 
-}
+     return this.http.get(this.uri+'/employees').map((response:Response) => response.json());
+   
+  }
+    getEmployee(empId:String){
+
+     return this.http.get(this.uri+'/employees?empId='+empId).map((response:Response) => response.json()).subscribe();
+   
+  }
+
+  getLoggedEffort(date:String,empId:String):Observable<any>{
+
+  return this.http.get(this.uri+'/effortLogged?associateId='+ empId +'&monyear='+date).map((response:Response) => response.json());
+  }
+
+  getLoggedEffortByDate(date:String):Observable<any>{
+
+  return this.http.get(this.uri+'/effortLogged?monyear='+date).map((response:Response) => response.json());
+  }
 
   save(employee: any):Observable<any> {
     if(employee.id != undefined){
@@ -40,9 +55,19 @@ getEmployees():Observable<any>{
  
   }
 
-  saveMessage(message: any) {
+  saveMessage(message: any):Observable<any> {
 	 return this.http.post(this.uri+'/messages', message);
   }
 
+
+
+  logEffort(effort: any) :Observable<any>{
+        if(effort.id != undefined){
+       return this.http.put(this.uri+'/effortLogged/'+effort.id , effort);
+    }else{
+       return this.http.post(this.uri+'/effortLogged', effort);
+    }
+  
+  }
 
 }

@@ -1,0 +1,37 @@
+{
+  "employees": [
+    {
+      "id": "1i7jpLu",
+      "deviceToken": "hadgfwquhtr8y2312y841768418uwq",
+      "fName": "Uttam",
+      "lName": "Ghorai",
+      "empId": "536631",
+      "cognizantMail": "uttam.ghorai@cognizant.com",
+      "clientMailId": "ughorai@mgmresorts.com",
+      "contactNumber": "+919952051795",
+      "userType": "admin"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "message": "Please submit your timesheet."
+    }
+  ],
+  "effortLogged": [
+    {
+      "id": 1,
+      "monyear": "Dec-2018",
+      "associateId": "536631",
+      "associateName": "Uttam Ghorai",
+      "week1": "5",
+      "week2": "1",
+      "week3": "1",
+      "week4": "1",
+      "clWeek1": "",
+      "clWeek2": "",
+      "clWeek3": "",
+      "clWeek4": ""
+    }
+  ]
+}

@@ -27,28 +27,7 @@ export class ContactPage {
       toast.present();
     });
 
-//get notifications
 
-  	this.employee.getNotifications().subscribe((resp) => {
-       console.log(resp);
-      this.messages=resp;
-
-      for (var i = this.messages.length - 1; i >= 0; i--) {
-      	var input = {type: 'radio',label:this.messages[i].message,value:this.messages[i].message}
-      	this.inputs.push(input);
-
-      }
-
-
-console.log(this.inputs);
-    }, (err) => {
-      let toast = this.toastCtrl.create({
-        message: err,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
 
   }
 
@@ -74,8 +53,20 @@ deleteTkn(deviceToken:string) {
 }
 
 remainderPrompt() {
-	if(this.deviceTokens.length == 0){
-		
+
+//get notifications
+
+    this.employee.getNotifications().subscribe((resp) => {
+       console.log(resp);
+      this.messages=resp;
+      this.inputs=[];
+      for (var i = this.messages.length - 1; i >= 0; i--) {
+        var input = {type: 'radio',label:this.messages[i].message,value:this.messages[i].message}
+        this.inputs.push(input);
+      }
+
+  if(this.deviceTokens.length == 0){
+    
   let alert = this.alertCtrl.create({
     title: 'Send Notification',
     subTitle: 'Please select employee before send.',
@@ -83,11 +74,11 @@ remainderPrompt() {
   });
   alert.present();
 
-		}else{
+    }else{
 
 
 
-	 let alert = this.alertCtrl.create({
+   let alert = this.alertCtrl.create({
     title: 'Send Notification',
     inputs:this.inputs,
     buttons: [
@@ -103,7 +94,7 @@ remainderPrompt() {
         handler: data => {
             console.log(data);
            
-               this.timesheetNotification.sendNotification(data).subscribe((resp) => {
+               this.timesheetNotification.sendNotification(data, this.deviceTokens).subscribe((resp) => {
                   this.deviceTokens = [];
               for (var i = this.employees.length - 1; i >= 0; i--) {
                 this.employees[i].selected = false;
@@ -130,7 +121,18 @@ remainderPrompt() {
     ]
   });
   alert.present();
-	}
+  }
+console.log(this.inputs);
+    }, (err) => {
+      let toast = this.toastCtrl.create({
+        message: err,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+    });
+
+
 
 }
 

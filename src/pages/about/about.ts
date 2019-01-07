@@ -4,7 +4,7 @@ import {Employee} from '../../provider/employee'
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import {TabsPage} from '../tabs/tabs'
-import { FCM } from '@ionic-native/fcm';
+
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
@@ -17,7 +17,7 @@ export class AboutPage {
  isSigned: boolean;
  deviceToken: String;
  user :any = {fName:'',lName:'',empId:'',cognizantMail:'',clientMailId:'',contactNumber:''};
-  constructor(private platform: Platform, public navCtrl: NavController,  public employee : Employee, public toastCtrl:ToastController, private formBuilder: FormBuilder, public storage: Storage,  public fcm: FCM) {
+  constructor(private platform: Platform, public navCtrl: NavController,  public employee : Employee, public toastCtrl:ToastController, private formBuilder: FormBuilder, public storage: Storage) {
     this.isSigned = false;
  this.account = this.formBuilder.group({
     id: [],
@@ -70,21 +70,7 @@ export class AboutPage {
 
     doSignup() {
     // Attempt to login in through our User service
-
-      if (this.platform.is('cordova')) {
-
-      // register device
-          //Notifications
-      this.fcm.subscribeToTopic('all');
-      this.fcm.getToken().then(token=>{
-        this.deviceToken = token;
-      })
-      //end notifications.
-
-      //end
-    }
     this.employee.save(this.account.value).subscribe((resp) => {
-    	this.account.get('deviceToken').setValue(this.deviceToken );
       this.storage.set('loggedUser',resp);
 
     this.isSigned = true;

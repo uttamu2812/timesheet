@@ -10,9 +10,9 @@ export class TimesheetNotification {
 
    }
 
-sendNotification(message:String) :Observable<any>
+sendNotification(message:String,deviceToken:String) :Observable<any>
 {  
-let body = {
+/*let body = {
     "notification":{
       "title":"MGM Timesheet Notification",
       "body":message,
@@ -27,7 +27,14 @@ let body = {
       "to":"/topics/all",
       "priority":"high",
       "restricted_package_name":""
-  }
+  }*/
+  let body =  {
+   "data":{
+     "title":"MGM Timesheet Notification",
+     "message":message
+       },
+   "registration_ids":deviceToken
+ }
   let options = new HttpHeaders().set('Content-Type','application/json');
   return this.http.post("https://fcm.googleapis.com/fcm/send",body,{
     headers: options.set('Authorization', 'key=AIzaSyDQbRKg55jf9Z195Dy6g5IFiFbTHTtMy4U'),

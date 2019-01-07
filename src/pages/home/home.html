@@ -5,35 +5,100 @@
 </ion-header>
 
 <ion-content >
+   <ion-item>
   <div style=" display: flex; justify-content: center;">
          
         <h1>{{date}}</h1>
-        
+     
       
   </div>
+</ion-item>
 <div  *ngIf="!isAdmin">
      <form [formGroup]="timesheet" (ngSubmit)="submitSheet()">
 
-      <ion-item>
-        <ion-label>Week 1</ion-label>
-        <ion-input type="text" formControlName="week1"></ion-input>
-      </ion-item>
-            <ion-item>
-        <ion-label>Week 2</ion-label>
-        <ion-input type="text" formControlName="week2"></ion-input>
-      </ion-item>
-            <ion-item>
-        <ion-label>Week 3</ion-label>
-        <ion-input type="text" formControlName="week3"></ion-input>
-      </ion-item>
-      
-             <ion-item>
-        <ion-label>Week 4</ion-label>
-        <ion-input type="text" formControlName="week4"></ion-input>
-      </ion-item>
-     
+        <ion-grid>
+    <ion-row>
+        <ion-col>
+          
+        </ion-col>
+        <ion-col>
+        Cognizant 
+        </ion-col>
+            <ion-col>
+        Client 
+        </ion-col>
+       
+  </ion-row>
+
+ <ion-row>
+      <ion-col style="margin-top: 3vh !important;">
+      Week1
+    </ion-col>
+      <ion-col>
+        <ion-item>
+    <ion-input type="text" formControlName="week1"></ion-input>
+  </ion-item>
+  </ion-col>
+        <ion-col>
+          <ion-item>
+    <ion-input type="text" formControlName="clWeek1"></ion-input>
+  </ion-item>
+    </ion-col>
+    
+ </ion-row>
+
+  <ion-row>
+              <ion-col style="margin-top: 3vh !important;">
+      Week2
+    </ion-col>
+      <ion-col>
+        <ion-item>
+    <ion-input type="text" formControlName="week2"></ion-input>
+  </ion-item>
+  </ion-col>
+        <ion-col>
+          <ion-item>
+    <ion-input type="text" formControlName="clWeek2"></ion-input>
+  </ion-item>
+    </ion-col> 
+</ion-row>
+
+  <ion-row>
+              <ion-col style="margin-top: 3vh !important;">
+      Week3
+    </ion-col>
+      <ion-col>
+        <ion-item>
+    <ion-input type="text" formControlName="week3"></ion-input>
+  </ion-item>
+  </ion-col>
+        <ion-col>
+          <ion-item>
+    <ion-input type="text" formControlName="clWeek3"></ion-input>
+  </ion-item>
+    </ion-col>
+ </ion-row>
+
+  <ion-row>
+               <ion-col style="margin-top: 3vh !important;">
+      Week4
+    </ion-col>
+      <ion-col>
+        <ion-item>
+    <ion-input type="text" formControlName="week4"></ion-input>
+  </ion-item>
+  </ion-col>
+        <ion-col>
+          <ion-item>
+    <ion-input type="text" formControlName="clWeek4"></ion-input>
+  </ion-item>
+    </ion-col>
+ </ion-row>
+
+</ion-grid>
+    
       <div style="display: flex;justify-content: center;">
-              <button ion-button type="submit" [disabled]="!timesheet.valid">Submit</button>
+              <button ion-button type="submit" >Submit</button>
       </div>
 
     </form>
@@ -41,6 +106,10 @@
 
 
 <div  *ngIf="isAdmin">
+  <div style="display: flex;">
+    <div class="cog-lb"></div><span style="margin: 1vh; ">Cognizant</span>
+    <div class="cl-lb"></div><span style="margin: 1vh;">Client</span>
+  </div>
   <ion-grid>
       <ion-row>
     <ion-col col-3>
@@ -62,46 +131,28 @@
      Total
     </ion-col>
   </ion-row>
-  <ion-row>
+  <ion-row  *ngFor="let effort of logEffortList">
     <ion-col col-3>
-      Associate 1
+     {{effort.associateName}}
     </ion-col>
     <ion-col>
-     40 hr
+     <span class="cognizant">{{effort.week1}}</span> / <span class="client">{{effort.clWeek1}}</span>
     </ion-col>
     <ion-col>
-     40 hr
+          <span class="cognizant">{{effort.week2}}</span> / <span class="client">{{effort.clWeek2}}</span>
     </ion-col>
     <ion-col>
-     40 hr
+         <span class="cognizant">{{effort.week3}}</span> / <span class="client">{{effort.clWeek3}}</span>
     </ion-col>
     <ion-col>
-     40 hr
+          <span class="cognizant">{{effort.week4}}</span> / <span class="client">{{effort.clWeek4}}</span>
     </ion-col>
     <ion-col>
-     160 hr
+
+     <span class="cognizant">{{effort.total}}</span> / <span class="client">{{effort.clTotal}}</span>
     </ion-col>
   </ion-row>
-  <ion-row>
-    <ion-col col-3>
-      Associate 2
-    </ion-col>
-    <ion-col>
-     40 hr
-    </ion-col>
-        <ion-col>
-     30 hr
-    </ion-col>
-        <ion-col>
-     40 hr
-    </ion-col>
-        <ion-col>
-     30 hr
-    </ion-col>
-            <ion-col>
-     130 hr
-    </ion-col>
-  </ion-row>
+  
 </ion-grid>
 
 </div>

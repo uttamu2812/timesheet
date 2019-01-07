@@ -1,0 +1,26 @@
+ 
+<ion-header>
+  <ion-navbar>
+    <ion-title>Notification Template</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="template" (ngSubmit)="save()">
+
+      <ion-item>
+        <ion-label>Message</ion-label>
+        <ion-input type="text" formControlName="message"></ion-input>
+      </ion-item>
+           
+      <div style="display: flex;justify-content: center;">
+              <button ion-button type="submit" [disabled]="!template.valid">Add</button>
+      </div>
+
+    </form>
+    <ion-card *ngFor="let message of templateList">
+      <ion-card-content>
+    {{message.message}}
+  </ion-card-content>
+  </ion-card>
+  </ion-content>
